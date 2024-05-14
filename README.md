@@ -1,8 +1,8 @@
-<h1 style="text-align: center;">Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping</h1>
+<h1 align="center">Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping</h1>
 
 <p>We proposed a simple UDA-NAS framework to search for lightweight neural networks for land cover mapping tasks under domain shift. The framework integrates Markov random field neural architecture search into a self-training UDA scheme to search for efficient and effective networks under a limited computation budget. The paper is <a href="(https://arxiv.org/abs/2404.14704)">here</a>.</p>
 
-<p style="text-align: center;">
+<p align="center">
 <img 
     style="display: block; 
     margin-left: auto; 
