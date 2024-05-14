@@ -3,11 +3,12 @@
 <p align="justify">We proposed a simple UDA-NAS framework to search for lightweight neural networks for land cover mapping tasks under domain shift. The framework integrates Markov random field neural architecture search into a self-training UDA scheme to search for efficient and effective networks under a limited computation budget.</p> 
 
 The [paper](https://arxiv.org/abs/2404.14704) accepted at 2024 CVPR Workshop. 
+<p>&nbsp;</p>
 
-<p align="center">
+<h1 align="center">
 <img src="doc/UDA-NAS1.png" alt="framework fig">
 </img>
-</p>
+</h1>
 
 
 ### Requirements
