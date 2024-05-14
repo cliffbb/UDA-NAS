@@ -11,6 +11,7 @@ results/
 *.pth
 *.pt
 *.sh
+*.ipynb
 # *.png
 
 .DS_Store
