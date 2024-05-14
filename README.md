@@ -1,14 +1,13 @@
-# Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping
-<p>We proposed a simple UDA-NAS framework to search for lightweight neural networks for land cover mapping tasks under domain shift. This is
-achieved by integrating Markov random field neural architecture search (MRF-NAS) into a self-training UDA framework to search for efficient
-and effective networks under a limited computation budget.</p>
+<h1 style="text-align: center;">Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping</h1>
 
- Paper link[https://arxiv.org/abs/2404.14704]
+<p>We proposed a simple UDA-NAS framework to search for lightweight neural networks for land cover mapping tasks under domain shift. The framework integrates Markov random field neural architecture search into a self-training UDA scheme to search for efficient and effective networks under a limited computation budget. The paper is <a href="(https://arxiv.org/abs/2404.14704)">here</a>.</p>
 
-
+<p>
+</p>
 
 ### Requirements
-Run The code depend on the following packages
+The code depends on the packages in the `requirements.txt` file. 
+Run `pip install -r requirements.txt` to install the packages.
 
 
 ### Overview
