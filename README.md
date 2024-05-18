@@ -2,7 +2,7 @@
 
 <p align="justify">We proposed a simple UDA-NAS framework to search for lightweight neural networks for land cover mapping tasks under domain shift. The framework integrates Markov random field neural architecture search into a self-training UDA scheme to search for efficient and effective networks under a limited computation budget.</p> 
 
-The [paper](https://arxiv.org/abs/2404.14704) accepted at 2024 CVPR Workshop. 
+The [paper](https://arxiv.org/abs/2404.14704) is accepted at 2024 CVPR Workshop. 
 <p>&nbsp;</p>
 
 <h1 align="center">
@@ -20,18 +20,95 @@ pip install -r requirements.txt
 ``` 
 
 ### Datasets
-* [OpenEarthMap dataset](https://open-earth-map.org/)
+* Download the [OpenEarthMap dataset](https://open-earth-map.org/) and based on the regional-wise UDA settings in the [paper](https://openaccess.thecvf.com/content/WACV2023/papers/Xia_OpenEarthMap_A_Benchmark_Dataset_for_Global_High-Resolution_Land_Cover_Mapping_WACV_2023_paper.pdf) organise the folder structure as follows: 
+```
+data
+|- OpenEarthMap
+|  |- images
+|  |  |- aachen 
+|  |  |- abancay
+|  |  |- ...
+|  |  |- ...
+|  |  |- ...
+|  |  |- zachodniopomorskie
+|  |  |- zanzibar
+|  |- labels
+|  |  |- aachen 
+|  |  |- abancay
+|  |  |- ...
+|  |  |- ...
+|  |  |- ...
+|  |  |- zachodniopomorskie
+|  |  |- zanzibar
+|  |- splits
+|  |  |- source.txt
+|  |  |- target_train.txt
+|  |  |- target_test.txt
+|  |  |- target_val.txt
+```
 
-* [FLAIR #1 dataset](https://github.com/IGNF/FLAIR-1)
+* Download the [FLAIR #1 dataset](https://ignf.github.io/FLAIR/) and based on the UDA settings in [GeoMultiTaskNet](https://openaccess.thecvf.com/content/CVPR2023W/EarthVision/papers/Marsocci_GeoMultiTaskNet_Remote_Sensing_Unsupervised_Domain_Adaptation_Using_Geographical_Coordinates_CVPRW_2023_paper.pdf) organise the folder structure as follows:
+```
+data
+|- FLAIR1
+|  |- images
+|  |  |  |- D006_2020 
+|  |  |  |- D008_2019
+|  |  |  |- ...
+|  |  |  |- ...
+|  |  |  |- ...
+|  |  |  |- D083_2020
+|  |  |  |- D085_2019
+|  |- labels
+|  |  |  |- D006_2020 
+|  |  |  |- D008_2019
+|  |  |  |- ...
+|  |  |  |- ...
+|  |  |  |- ...
+|  |  |  |- D083_2020
+|  |  |  |- D085_2019
+|  |- splits
+|  |  |- source.txt
+|  |  |- target_train.txt
+|  |  |- target_test.txt
+|  |  |- target_val.txt
+```
 
 
 ### Usage
-* Searching: Learning pairwise MRF and inference over the learnt MRF via diverse M-best loopy inference
+##### Searching
+* Learning pairwise MRF. 
+```
+  python tools/train.py configs/nas_uda/search_oem_nas_uda_mrf_unet.py 
+```
+* Inference over the learnt MRF for different architecture `choices` config.
+```
+ python tools/inference.py --ckp-path /path/to/search/checkpoint.pth
+```
 
+##### Training
+Training the found architectures to select optimal solution. Modify the architecture `choices` config in the config file and run the commands below to train the network.
+```
+python tools/train.py configs/nas_uda/ \
+    train_oem_nas_uda_mrf_unet_confidence_based.py
 
-* Training:  The found architectures are re-trained to to select optimal solution.
+python tools/train.py configs/nas_uda/ \
+    train_flair_nas_uda_mrf_unet_confidence_based.py
+```
 
+##### Testing and Pretrained network
+ Download pretrained weights of the found networks on [OpenEarthMap](https://drive.google.com/file/d/1b7lO2WHOKbgKvhKPd2iEd80F-XGDNcTR/view?usp=sharing) and [ FLAIR #1](https://drive.google.com/file/d/1dTpu2-phL00mBqVnNumfODTO650yE4-n/view?usp=sharing), unzip them into the `pretrained` folder and run the commands below.
+```
+python tools/test.py \
+    configs/nas_uda/test_oem_nas_uda_mrf_unet_confidence_based.py \
+    pretrained/openearthmap/net_c_1.pth \
+    --test-set --eval mIoU --show-dir results
 
+python tools/test.py \
+    configs/nas_uda/test_flair_nas_uda_mrf_unet_confidence_based.py \
+    pretrained/openearthmap/net_c_1.pth \
+    --test-set --eval mIoU --show-dir results
+```
 
 ### Citation
 ```BibTeX

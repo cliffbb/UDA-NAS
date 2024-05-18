@@ -5,7 +5,7 @@
 
 # dataset settings
 dataset_type = "OEMDataset"  
-data_root = "the/path/of/OpenEarthMap"   # Replce the dataset root path
+data_root = "data/OpenEarthMap"  
 img_norm_cfg = dict(mean=[113.4671, 116.5357, 99.9251], 
                     std=[4.9812, 4.4575, 4.6912], to_rgb=True)
 crop_size = (512, 512)
@@ -59,29 +59,29 @@ data = dict(
         source=dict(# source train set
             type=dataset_type, 
             data_root=data_root,  
-            img_dir="images/all",  
-            ann_dir="labels/all", 
-            split = "regional_splits/train_source.txt", 
+            img_dir="images",  
+            ann_dir="labels", 
+            split = "splits/source.txt", 
             pipeline=source_train_pipeline),
         target=dict(# target train set
             type=dataset_type, 
             data_root=data_root,  
-            img_dir="images/all",  
-            ann_dir="labels/all", 
-            split = "regional_splits/train_target.txt", 
+            img_dir="images",  
+            ann_dir="labels", 
+            split = "splits/target_train.txt", 
             pipeline=target_train_pipeline)),
     val=dict(# target val set
         type=dataset_type,
         data_root=data_root,
-        img_dir="images/all",
-        ann_dir="labels/all",
-        split = "regional_splits/val_target.txt",
+        img_dir="images",
+        ann_dir="labels",
+        split = "splits/target_val.txt",
         pipeline=test_pipeline),
     test=dict(# target test set
         type=dataset_type,
         data_root=data_root,
-        img_dir="images/all",
-        ann_dir="labels/all",
-        split = "regional_splits/test_target.txt",
+        img_dir="images",
+        ann_dir="labels",
+        split = "splits/target_test.txt",
         pipeline=test_pipeline)
 )

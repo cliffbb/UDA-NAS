@@ -5,7 +5,7 @@
 
 # dataset settings
 dataset_type = "FLAIRDataset"  
-data_root = "the/path/of/FLAIR1"    # Replce the dataset root path  
+data_root = "data/FLAIR1"     
 img_norm_cfg = dict(mean=[119.0252, 125.3428, 116.8876], 
                     std=[5.4468, 4.8114, 4.7743], to_rgb=True)
 crop_size = (512, 512)  
@@ -59,22 +59,22 @@ data = dict(
         source=dict(# source train set
             type=dataset_type, 
             data_root=data_root,  
-            img_dir="images/train",  
-            ann_dir="labels/train", 
-            split = "splits/source_train.txt", 
+            img_dir="images",  
+            ann_dir="labels", 
+            split = "splits/source.txt", 
             pipeline=source_train_pipeline),
         target=dict(# target train set
             type=dataset_type, 
             data_root=data_root,  
-            img_dir="images/train",  
-            ann_dir="labels/train", 
+            img_dir="images",  
+            ann_dir="labels", 
             split = "splits/target_train.txt", 
             pipeline=target_train_pipeline)),
     val=dict(# target val set
         type=dataset_type,
         data_root=data_root,
-        img_dir="images/val",
-        ann_dir="labels/val",
+        img_dir="images",
+        ann_dir="labels",
         split = "splits/target_val.txt",
         pipeline=test_pipeline),
     test=dict(# target test set
