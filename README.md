@@ -112,11 +112,13 @@ python tools/test.py \
 
 ### Citation
 ```BibTeX
-@InProceedings{CliffUDA-NAS2024,
-  title     = {Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping},
-  author    = {Clifford Broni-Bediako, Junshi Xia, Naoto Yokoya},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshop (CVPRW)},
-  year      = {2024}
+@InProceedings{Broni-Bediako_2024_CVPR,
+    author    = {Broni-Bediako, Clifford and Xia, Junshi and Yokoya, Naoto},
+    title     = {Unsupervised Domain Adaptation Architecture Search with Self-Training for Land Cover Mapping},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2024},
+    pages     = {543-553}
 }
 ```
 
